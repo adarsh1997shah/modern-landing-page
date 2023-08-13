@@ -11,38 +11,38 @@ function Navbar() {
 
 				<div className="hidden lg:flex items-center">
 					<a
-						className="text-base capitalize hover:text-theme-text-color mx-5 transition-colors"
+						className="text-base capitalize hover:text-primary mx-5 transition-colors"
 						href="/find-jobs">
 						Find Workers
 					</a>
 					<a
-						className="text-base capitalize hover:text-theme-text-color mx-5 transition-colors"
+						className="text-base capitalize hover:text-primary mx-5 transition-colors"
 						href="/find-jobs">
 						Find Jobs
 					</a>
 					<a
-						className="text-base capitalize hover:text-theme-text-color mx-5 transition-colors"
+						className="text-base capitalize hover:text-primary mx-5 transition-colors"
 						href="/find-jobs">
 						About Us
 					</a>
 					<a
-						className="text-base capitalize hover:text-theme-text-color mx-5 transition-colors"
+						className="text-base capitalize hover:text-primary mx-5 transition-colors"
 						href="/find-jobs">
 						Resources
 					</a>
 					<a
-						className="text-base capitalize hover:text-theme-text-color mx-5 transition-colors"
+						className="text-base capitalize hover:text-primary mx-5 transition-colors"
 						href="/find-jobs">
 						Contact
 					</a>
 					<a
-						className="text-base capitalize hover:text-theme-text-color mx-5 transition-colors xl:ml-20"
+						className="text-base capitalize hover:text-primary mx-5 transition-colors xl:ml-20"
 						href="/find-jobs">
 						Login
 					</a>
 
 					<button
-						className="border-2 border-[#212a34] rounded-xl lg:px-4 xl:px-9 py-3 font-black hover:bg-theme-text-color hover:border-theme-text-color hover:text-neutral-50 transition-colors"
+						className="border-2 border-[#212a34] rounded-xl lg:px-4 xl:px-9 py-3 font-black hover:bg-primary hover:border-primary hover:text-neutral-50 transition-colors"
 						type="button">
 						Open an account
 					</button>
