@@ -11,7 +11,7 @@ function Landing() {
 	return (
 		<div className="flex container mx-auto px-4 bg-[url('@/assets/img/bg-1.png')] bg-no-repeat bg-auto bg-bottom min-h-[calc(100vh-90px)] flex-wrap">
 			<div className="flex flex-col justify-center w-full md:w-1/2 items-center md:items-start">
-				<h2 className="text-6xl font-extrabold leading-[72px]">
+				<h2 className="text-5xl sm:text-6xl font-extrabold leading-[50px] sm:leading-[72px]">
 					<span className="capitalize">Modern Temp</span>
 					<br />
 					<span className="primary-gradient capitalize text-primary bg-[-webkit-linear-gradient(#eee, #333)]">

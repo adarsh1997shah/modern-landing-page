@@ -6,6 +6,9 @@ export default {
 			colors: {
 				primary: '#11b2a8',
 			},
+			fontFamily: {
+				Neue: ['Neue Haas Unica'],
+			},
 		},
 	},
 	plugins: [],
