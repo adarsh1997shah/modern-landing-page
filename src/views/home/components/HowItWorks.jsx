@@ -47,7 +47,7 @@ function HowItWorks() {
 
 function Step({ icon, number, title, content }) {
 	return (
-		<div>
+		<div className="shadow-md p-4 rounded-sm">
 			<img className="mb-7 h-16" src={icon} alt={`step${number}`} />
 
 			<div className="flex flex-col gap-2">
@@ -62,7 +62,7 @@ function Step({ icon, number, title, content }) {
 }
 
 Step.propTypes = {
-	icon: PropTypes.element,
+	icon: PropTypes.string,
 	number: PropTypes.number,
 	title: PropTypes.string,
 	content: PropTypes.string,
