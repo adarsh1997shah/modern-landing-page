@@ -9,11 +9,11 @@ import img4 from '@/assets/img/carousel-img-4.png';
 import img5 from '@/assets/img/carousel-img-5.png';
 
 const IMAGES = [
-	{ src: img1, alt: 'img1' },
-	{ src: img2, alt: 'img2' },
-	{ src: img3, alt: 'img3' },
-	{ src: img4, alt: 'img4' },
-	{ src: img5, alt: 'img5' },
+	{ src: img1, alt: 'img1', text: 'Warehousing' },
+	{ src: img2, alt: 'img2', text: 'Manufacturing' },
+	{ src: img3, alt: 'img3', text: 'Food & Beverage' },
+	{ src: img4, alt: 'img4', text: 'Hospitality' },
+	{ src: img5, alt: 'img5', text: 'Restaurants' },
 ];
 const IMAGES_LENGTH = IMAGES.length;
 
@@ -25,26 +25,27 @@ function Carousel() {
 
 	const isMobile = useMediaQuery('(max-width: 768px)');
 
-	const IMAGE_WIDTH = useMemo(() => 100 / (isMobile ? 2 : IMAGES_LENGTH - 1), [isMobile]);
+	const CURR_NUM_OF_IMAGES_TO_SHOW = useMemo(
+		() => (isMobile ? 3 : IMAGES_LENGTH),
+		[isMobile]
+	);
+	const IMAGE_WIDTH = useMemo(
+		() => 100 / (CURR_NUM_OF_IMAGES_TO_SHOW - 1),
+		[CURR_NUM_OF_IMAGES_TO_SHOW]
+	);
 
-	const toggleTransitionNone = () => {
-		carouselRef.current.classList.add('transition-none');
-
-		setTimeout(() => {
-			carouselRef.current.classList.remove('transition-none');
-		}, 100);
+	const injectTransition = () => {
+		carouselRef.current.style.transition = 'transform 500ms ease';
 	};
 
 	const onTransitionEnd = useCallback(() => {
 		if (count == -IMAGES_LENGTH) {
 			setCount(0);
-
-			toggleTransitionNone();
 		} else if (count == 1) {
 			setCount(-IMAGES_LENGTH + 1);
-
-			toggleTransitionNone();
 		}
+
+		carouselRef.current.style.transition = 'none';
 
 		setTimeout(() => {
 			isSlidingRef.current = false;
@@ -56,6 +57,7 @@ function Carousel() {
 			setCount(count - 1);
 
 			isSlidingRef.current = true;
+			injectTransition();
 		}
 	};
 
@@ -64,51 +66,64 @@ function Carousel() {
 			setCount(count + 1);
 
 			isSlidingRef.current = true;
+			injectTransition();
 		}
 	};
 
 	return (
-		<div className="relative mx-auto w-full md:w-[90%] overflow-x-hidden">
+		<div className="carousel-container relative mx-auto w-full lg:w-[90%] overflow-x-hidden">
 			<div
-				className="flex h-40 relative scroll-smooth transition-transform"
+				className="carousel flex h-48 py-6 relative"
 				style={{
 					transform: `translateX(${count * IMAGE_WIDTH}%)`,
 					left: `-${IMAGE_WIDTH + IMAGE_WIDTH / 2}%`,
 				}}
 				ref={carouselRef}
 				onTransitionEnd={onTransitionEnd}>
-				<img
-					className="slide-5 rounded-xl pr-2"
-					src={IMAGES[IMAGES_LENGTH - 1].src}
-					alt="imgLast"
-					style={{ minWidth: `${IMAGE_WIDTH}%` }}
-				/>
+				{IMAGES.slice(
+					IMAGES.length - Math.ceil(CURR_NUM_OF_IMAGES_TO_SHOW / 2),
+					IMAGES_LENGTH
+				).map(({ src, alt, text }, index) => (
+					<div
+						className={`clone slide-${index} relative px-1 grayscale`}
+						key={src}
+						style={{ minWidth: `${IMAGE_WIDTH}%` }}>
+						<img className="w-full h-full rounded-xl" src={src} alt={alt} />
+						<p className="w-4/5 break-words absolute bottom-4 text-white font-bold text-2xl left-5">
+							{text}
+						</p>
+					</div>
+				))}
 
-				{IMAGES.map(({ src, alt }, index) => {
+				{IMAGES.map(({ src, alt, text }, index) => {
 					return (
-						<img
-							key={src}
-							className={`slide-${index} rounded-xl pr-2${
-								index == Math.abs(count) + Math.floor(IMAGES_LENGTH / 2) ? '' : ''
+						<div
+							className={`main slide-${index} relative px-1${
+								index == Math.abs(count) ? ' active' : ' grayscale'
 							}`}
-							src={src}
-							alt={alt}
-							style={{ minWidth: `${IMAGE_WIDTH}%` }}
-						/>
+							key={src}
+							style={{ minWidth: `${IMAGE_WIDTH}%` }}>
+							<img className="w-full h-full rounded-xl" src={src} alt={alt} />
+							<p className="w-4/5 break-words absolute bottom-4 text-white font-bold text-2xl left-5">
+								{text}
+							</p>
+						</div>
 					);
 				})}
 
-				{IMAGES.map(({ src, alt }, index) => (
-					<img
-						key={src}
-						className={`second-slide-${index} rounded-xl pr-2${
-							index == Math.abs(count) - Math.ceil(IMAGES_LENGTH / 2) ? '' : ''
-						}`}
-						src={src}
-						alt={alt}
-						style={{ minWidth: `${IMAGE_WIDTH}%` }}
-					/>
-				))}
+				{IMAGES.slice(0, Math.ceil(CURR_NUM_OF_IMAGES_TO_SHOW / 2)).map(
+					({ src, alt, text }, index) => (
+						<div
+							className={`clone slide-${index} px-1 relative grayscale`}
+							key={src}
+							style={{ minWidth: `${IMAGE_WIDTH}%` }}>
+							<img className="w-full h-full rounded-xl" src={src} alt={alt} />
+							<p className="w-4/5 break-words absolute bottom-4 text-white font-bold text-2xl left-5">
+								{text}
+							</p>
+						</div>
+					)
+				)}
 			</div>
 
 			<div>
