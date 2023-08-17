@@ -47,7 +47,7 @@ function HowItWorks() {
 
 function Step({ icon, number, title, content }) {
 	return (
-		<div className="shadow-md p-4 rounded-sm">
+		<div className="p-4 rounded-sm">
 			<img className="mb-7 h-16" src={icon} alt={`step${number}`} />
 
 			<div className="flex flex-col gap-2">

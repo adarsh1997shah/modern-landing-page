@@ -3,7 +3,7 @@ import Carousel from '@/common/components/carousel';
 function WorkingWith() {
 	return (
 		<div
-			className="flex flex-col mt-16 gap-6 items-center bg-no-repeat"
+			className="flex flex-col mt-16 pb-12 gap-6 items-center bg-no-repeat"
 			style={{ backgroundImage: `url('src/assets/img/bg-3.png')` }}>
 			<p className="uppercase text-[#212A34] text-sm tracking-widest">
 				We are serving in
