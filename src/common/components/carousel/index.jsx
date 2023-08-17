@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import useMediaQuery from '@/common/hooks/useMediaQuery';
 
@@ -83,91 +84,146 @@ function Carousel() {
 				{IMAGES.slice(
 					IMAGES.length - Math.ceil(CURR_NUM_OF_IMAGES_TO_SHOW / 2),
 					IMAGES_LENGTH
-				).map(({ src, alt, text }, index) => (
-					<div
-						className={`clone slide-${index} relative px-1 grayscale`}
-						key={src}
-						style={{ minWidth: `${IMAGE_WIDTH}%` }}>
-						<img className="w-full h-full rounded-xl" src={src} alt={alt} />
-						<p className="w-4/5 break-words absolute bottom-4 text-white font-bold text-2xl left-5">
-							{text}
-						</p>
-					</div>
-				))}
+				).map((image, index, arr) => {
+					const { src } = image;
+					const isActive = index == arr.length - 1 && count == 1;
 
-				{IMAGES.map(({ src, alt, text }, index) => {
 					return (
-						<div
-							className={`main slide-${index} relative px-1${
-								index == Math.abs(count) ? ' active' : ' grayscale'
-							}`}
+						<Image
+							className="clone"
 							key={src}
-							style={{ minWidth: `${IMAGE_WIDTH}%` }}>
-							<img className="w-full h-full rounded-xl" src={src} alt={alt} />
-							<p className="w-4/5 break-words absolute bottom-4 text-white font-bold text-2xl left-5">
-								{text}
-							</p>
-						</div>
+							isActive={isActive}
+							index={index}
+							{...image}
+							imageWidth={IMAGE_WIDTH}
+						/>
+					);
+				})}
+
+				{IMAGES.map((image, index) => {
+					const { src } = image;
+					const isActive =
+						index == Math.abs(count) && count != 1 && count != -IMAGES_LENGTH;
+
+					return (
+						<Image
+							className="main"
+							key={src}
+							isActive={isActive}
+							index={index}
+							{...image}
+							imageWidth={IMAGE_WIDTH}
+						/>
 					);
 				})}
 
 				{IMAGES.slice(0, Math.ceil(CURR_NUM_OF_IMAGES_TO_SHOW / 2)).map(
-					({ src, alt, text }, index) => (
-						<div
-							className={`clone slide-${index} px-1 relative grayscale`}
-							key={src}
-							style={{ minWidth: `${IMAGE_WIDTH}%` }}>
-							<img className="w-full h-full rounded-xl" src={src} alt={alt} />
-							<p className="w-4/5 break-words absolute bottom-4 text-white font-bold text-2xl left-5">
-								{text}
-							</p>
-						</div>
-					)
+					(image, index) => {
+						const { src } = image;
+						const isActive = index == 0 && count == -IMAGES_LENGTH;
+
+						return (
+							<Image
+								className="clone"
+								key={src}
+								isActive={isActive}
+								index={index}
+								{...image}
+								imageWidth={IMAGE_WIDTH}
+							/>
+						);
+					}
 				)}
 			</div>
 
 			<div>
-				<button className="absolute -translate-y-1/2 top-1/2 left-4" onClick={handlePrev}>
-					<span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-neutral-400">
-						<svg
-							className="w-4 h-4 text-white dark:text-gray-800"
-							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 6 10">
-							<path
-								stroke="currentColor"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M5 1 1 5l4 4"
-							/>
-						</svg>
-					</span>
-				</button>
-				<button
-					className="absolute -translate-y-1/2 top-1/2 right-4"
-					onClick={handleNext}>
-					<span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-neutral-400">
-						<svg
-							className="w-4 h-4 text-white dark:text-gray-800"
-							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 6 10">
-							<path
-								stroke="currentColor"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="m1 9 4-4-4-4"
-							/>
-						</svg>
-					</span>
-				</button>
+				<SlideLeftBtn handlePrev={handlePrev} />
+				<SliderRightBtn handleNext={handleNext} />
 			</div>
 		</div>
 	);
 }
+
+function Image({ className, index, isActive, src, imageWidth, alt, text }) {
+	return (
+		<div
+			className={`slide-${index} relative px-1 ${className} ${
+				isActive ? 'active' : 'grayscale'
+			}`}
+			style={{
+				minWidth: `${imageWidth}%`,
+				transition: `transform 500ms ease`,
+			}}>
+			<img className="w-full h-full rounded-xl" src={src} alt={alt} />
+			<p className="w-4/5 break-words absolute bottom-4 text-white font-bold text-2xl left-5">
+				{text}
+			</p>
+		</div>
+	);
+}
+
+function SlideLeftBtn({ handlePrev }) {
+	return (
+		<button className="absolute -translate-y-1/2 top-1/2 left-4" onClick={handlePrev}>
+			<span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-neutral-400">
+				<svg
+					className="w-4 h-4 text-white dark:text-gray-800"
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 6 10">
+					<path
+						stroke="currentColor"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeWidth="2"
+						d="M5 1 1 5l4 4"
+					/>
+				</svg>
+			</span>
+		</button>
+	);
+}
+
+function SliderRightBtn({ handleNext }) {
+	return (
+		<button className="absolute -translate-y-1/2 top-1/2 right-4" onClick={handleNext}>
+			<span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-neutral-400">
+				<svg
+					className="w-4 h-4 text-white dark:text-gray-800"
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 6 10">
+					<path
+						stroke="currentColor"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeWidth="2"
+						d="m1 9 4-4-4-4"
+					/>
+				</svg>
+			</span>
+		</button>
+	);
+}
+
+Image.propTypes = {
+	className: PropTypes.string,
+	index: PropTypes.number,
+	isActive: PropTypes.bool,
+	src: PropTypes.string,
+	imageWidth: PropTypes.number,
+	alt: PropTypes.string,
+	text: PropTypes.string,
+};
+
+SlideLeftBtn.propTypes = {
+	handlePrev: PropTypes.func,
+};
+
+SliderRightBtn.propTypes = {
+	handleNext: PropTypes.func,
+};
 
 export default Carousel;
