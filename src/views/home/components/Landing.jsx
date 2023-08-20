@@ -9,7 +9,7 @@ import person8 from '@/assets/img/user-image-8.png';
 
 function Landing() {
 	return (
-		<div className="flex container mx-auto px-4 bg-[url('@/assets/img/bg-1.png')] bg-no-repeat bg-auto bg-bottom min-h-[calc(100vh-90px)] flex-wrap">
+		<div className="flex container mx-auto px-8 bg-[url('@/assets/img/bg-1.png')] bg-no-repeat bg-auto bg-bottom min-h-[calc(100vh-90px)] flex-wrap">
 			<div className="flex flex-col justify-center w-full md:w-1/2 items-center md:items-start">
 				<h2 className="text-5xl sm:text-6xl font-extrabold leading-[50px] sm:leading-[72px]">
 					<span className="capitalize">Modern Temp</span>

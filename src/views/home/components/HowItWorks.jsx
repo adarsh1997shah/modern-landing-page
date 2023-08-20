@@ -7,12 +7,12 @@ import step4 from '@/assets/svg/step4.svg';
 
 function HowItWorks() {
 	return (
-		<div className="bg-[#f0ffff] py-16 flex flex-col items-center">
-			<h1 className="text-4xl sm:text-5xl font-extrabold pb-12 px-10">
+		<div className="bg-[#f0ffff] py-8 flex flex-col items-start sm:items-center px-8">
+			<h1 className="text-4xl sm:text-5xl font-extrabold pb-12">
 				<span className="text-primary">How</span> on-demand staffing works
 			</h1>
 
-			<div className="grid sm:grid-cols-2 lg:grid-cols-4 w-10/12 gap-10">
+			<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:px-20">
 				<Step
 					icon={step1}
 					number={1}
@@ -47,7 +47,7 @@ function HowItWorks() {
 
 function Step({ icon, number, title, content }) {
 	return (
-		<div className="p-4 rounded-sm">
+		<div className="sm:p-4 rounded-sm">
 			<img className="mb-7 h-16" src={icon} alt={`step${number}`} />
 
 			<div className="flex flex-col gap-2">
