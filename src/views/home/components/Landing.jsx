@@ -19,15 +19,15 @@ function Landing() {
 					</span>
 				</h2>
 
-				<div className="flex mt-8 gap-5 w-full">
+				<div className="flex mt-8 gap-3 sm:gap-5 w-full flex-wrap sm:flex-nowrap">
 					<button
-						className="bg-[#353843] text-slate-50 py-3 px-6 rounded-xl font-bold w-1/2 md:w-auto"
+						className="w-full bg-[#353843] text-slate-50 py-3 px-6 rounded-xl font-bold sm:w-1/2 md:w-auto"
 						type="button">
 						Find Workers
 					</button>
 
 					<button
-						className="bg-primary text-slate-50 py-3 px-6 rounded-xl font-bold w-1/2 md:w-auto"
+						className="w-full bg-primary text-slate-50 py-3 px-6 rounded-xl font-bold sm:w-1/2 md:w-auto"
 						type="button">
 						Find a Job
 					</button>

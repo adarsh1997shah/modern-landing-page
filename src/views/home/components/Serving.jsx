@@ -29,7 +29,7 @@ function Serving() {
 				</div>
 			</Container>
 
-			<div className="flex p-8 lg:px-24 flex-wrap md:flex-nowrap gap-10 items-center justify-center">
+			<div className="flex p-8 lg:px-24 flex-wrap md:flex-nowrap gap-5 md:gap-10 items-center justify-center">
 				<button
 					className="w-full sm:w-[70%] md:w-1/2 bg-[#2B2E33] bg-cover rounded-[20px] p-9"
 					style={{ backgroundImage: "url('src/assets/webp/button-bg-1.webp')" }}>
