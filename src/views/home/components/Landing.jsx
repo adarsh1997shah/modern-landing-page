@@ -9,7 +9,7 @@ import person8 from '@/assets/img/user-image-8.png';
 
 function Landing() {
 	return (
-		<div className="flex container mx-auto px-8 bg-[url('@/assets/img/bg-1.png')] bg-no-repeat bg-auto bg-bottom min-h-[calc(100vh-90px)] flex-wrap">
+		<div className="flex container mx-auto px-8 bg-[url('@/assets/img/bg-1.png')] bg-no-repeat bg-auto bg-bottom min-h-[calc(100vh-90px)] flex-wrap items-center">
 			<div className="flex flex-col justify-center w-full md:w-1/2 items-center md:items-start">
 				<h2 className="text-5xl sm:text-6xl font-extrabold leading-[50px] sm:leading-[72px]">
 					<span className="capitalize">Modern Temp</span>
@@ -34,7 +34,7 @@ function Landing() {
 				</div>
 			</div>
 
-			<div className="w-full md:flex gap-7 md:w-1/2 pt-20 md:items-start hidden">
+			<div className="w-full md:flex gap-7 md:w-1/2 my-20 md:items-start hidden">
 				<div className="flex flex-col gap-7">
 					<img className="rounded-tl-[40%]" src={person8} alt="user-image-8" />
 					<img

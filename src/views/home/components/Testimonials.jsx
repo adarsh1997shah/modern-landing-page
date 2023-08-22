@@ -1,4 +1,4 @@
-import StackCarousel from '@/common/components/StackCarousel.jsx';
+import StackCarousel from '@/common/components/stackCarousel';
 
 import heart from '@/assets/svg/heart.svg';
 
