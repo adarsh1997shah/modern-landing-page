@@ -13,7 +13,7 @@ function Serving() {
 						Grizzly Force Cities
 					</p>
 
-					<h1 className="text-4xl sm:text-5xl font-extrabold py-5 pb-10 sm:text-center md:text-left">
+					<h1 className="text-4xl sm:text-5xl font-extrabold py-5 sm:text-center md:text-left">
 						<span>
 							Serving <span className="text-primary">The Greater Vancouver</span>,{' '}
 							<span className="text-primary">Victoria</span>,{' '}
@@ -31,9 +31,9 @@ function Serving() {
 
 			<div className="flex p-8 lg:px-24 flex-wrap md:flex-nowrap gap-5 md:gap-10 items-center justify-center">
 				<button
-					className="w-full sm:w-[70%] md:w-1/2 bg-[#2B2E33] bg-cover rounded-[20px] p-9"
+					className="w-full sm:w-[70%] md:w-1/2 bg-[#2B2E33] bg-cover rounded-[20px] p-9 self-stretch"
 					style={{ backgroundImage: "url('src/assets/webp/button-bg-1.webp')" }}>
-					<div className="text-left font-extrabold text-white text-3xl">
+					<div className="text-left font-extrabold text-white text-2xl md:text-3xl">
 						Looking for additional help?
 					</div>
 					<div className="flex">
@@ -43,12 +43,12 @@ function Serving() {
 				</button>
 
 				<button
-					className="w-full sm:w-[70%] md:w-1/2 bg-primary bg-cover rounded-[20px] p-9"
+					className="w-full sm:w-[70%] md:w-1/2 bg-primary bg-cover rounded-[20px] p-9 self-stretch"
 					style={{ backgroundImage: "url('src/assets/webp/button-bg-1.webp')" }}>
-					<div className="text-end font-extrabold text-white text-3xl">
+					<div className="text-start md:text-end font-extrabold text-white text-2xl md:text-3xl">
 						Looking for extra cash?
 					</div>
-					<div className="flex justify-end">
+					<div className="flex justify-start md:justify-end">
 						<span className="mr-2 text-white font-extrabold">Find a Job</span>
 						<img className="fill-white" src={slantRightArrow2} alt="slant-right-arrow" />
 					</div>

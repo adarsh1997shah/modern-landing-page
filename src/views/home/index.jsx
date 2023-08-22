@@ -7,6 +7,7 @@ import ForEmployers from './components/ForEmployers';
 import Testimonials from './components/Testimonials';
 import JobSeekers from './components/JobSeekers';
 import Serving from './components/Serving';
+import NewsLetter from './components/NewsLetter';
 
 function Home() {
 	return (
@@ -24,6 +25,7 @@ function Home() {
 			<Divider />
 
 			<Serving />
+			<NewsLetter />
 		</div>
 	);
 }
