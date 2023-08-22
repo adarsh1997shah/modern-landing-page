@@ -45,10 +45,10 @@ function Serving() {
 				<button
 					className="w-full sm:w-[70%] md:w-1/2 bg-primary bg-cover rounded-[20px] p-9"
 					style={{ backgroundImage: "url('src/assets/webp/button-bg-1.webp')" }}>
-					<div className="text-left font-extrabold text-white text-3xl">
+					<div className="text-end font-extrabold text-white text-3xl">
 						Looking for extra cash?
 					</div>
-					<div className="flex">
+					<div className="flex justify-end">
 						<span className="mr-2 text-white font-extrabold">Find a Job</span>
 						<img className="fill-white" src={slantRightArrow2} alt="slant-right-arrow" />
 					</div>
