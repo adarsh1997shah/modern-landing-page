@@ -7,7 +7,7 @@ import step4 from '@/assets/svg/step4.svg';
 
 function HowItWorks() {
 	return (
-		<div className="bg-[#f0ffff] py-8 flex flex-col items-start sm:items-center px-8">
+		<div className="bg-[#f0ffff] p-8 flex flex-col items-start sm:items-center">
 			<h1 className="text-4xl sm:text-5xl font-extrabold pb-12">
 				<span className="text-primary">How</span> on-demand staffing works
 			</h1>

@@ -72,7 +72,7 @@ function Carousel() {
 	};
 
 	return (
-		<div className="carousel-container relative mx-auto w-full lg:w-[90%] overflow-x-hidden">
+		<div className="carousel-container relative mx-auto w-full overflow-x-hidden">
 			<div
 				className="carousel flex h-48 py-6 relative"
 				style={{
