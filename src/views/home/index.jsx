@@ -6,6 +6,7 @@ import WorkingWith from './components/WorkingWith';
 import ForEmployers from './components/ForEmployers';
 import Testimonials from './components/Testimonials';
 import JobSeekers from './components/JobSeekers';
+import Serving from './components/Serving';
 
 function Home() {
 	return (
@@ -19,6 +20,10 @@ function Home() {
 			<ForEmployers />
 			<Testimonials />
 			<JobSeekers />
+
+			<Divider />
+
+			<Serving />
 		</div>
 	);
 }
